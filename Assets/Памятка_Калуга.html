@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Памятка по безопасности — Калуга | Напитки Вместе</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --clr-accent: #9D3339;
+      --clr-accent-deep: #450D1B;
+      --clr-text: #1E1E1E;
+      --clr-text-muted: #424242;
+      --clr-bg: #FFFFFF;
+      --clr-surface: #F4E5CB;
+      --clr-peach: #F7D1AA;
+      --clr-mint: #A5D7AB;
+      --clr-green-deep: #1E4B2E;
+    }
+
+    @media print {
+      body { margin: 0; padding: 0; }
+      .no-print { display: none !important; }
+      .page { box-shadow: none !important; margin: 0 !important; border-radius: 0 !important; }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #EAEAEA;
+      color: var(--clr-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .no-print {
+      background: var(--clr-accent-deep);
+      color: #fff;
+      text-align: center;
+      padding: 16px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .no-print button {
+      background: var(--clr-accent);
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .no-print button:hover { background: #b53e45; }
+
+    .page {
+      max-width: 800px;
+      margin: 32px auto;
+      background: var(--clr-bg);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .header {
+      background: var(--clr-accent-deep);
+      color: #fff;
+      padding: 40px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(157,51,57,0.4) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header__logo {
+      height: 48px;
+      width: auto;
+      margin-bottom: 24px;
+      filter: brightness(0) invert(1);
+    }
+
+    .header__badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 4px 14px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 42px;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .header__factory {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: var(--clr-peach);
+      letter-spacing: 0.05em;
+    }
+
+    .header__date {
+      margin-top: 16px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .content { padding: 40px 48px; }
+
+    .intro {
+      background: var(--clr-surface);
+      border-left: 4px solid var(--clr-accent);
+      padding: 20px 24px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 32px;
+      font-size: 15px;
+      color: var(--clr-text-muted);
+      line-height: 1.7;
+    }
+
+    .intro strong {
+      color: var(--clr-accent);
+    }
+
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 0.05em;
+      color: var(--clr-accent-deep);
+      margin-top: 32px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--clr-surface);
+    }
+
+    h2:first-of-type { margin-top: 0; }
+
+    .rule-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .rule-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 16px;
+      background: #fafafa;
+      border-radius: 8px;
+      border: 1px solid #f0f0f0;
+      font-size: 14px;
+      line-height: 1.6;
+      transition: background 0.2s;
+    }
+
+    .rule-list li:hover { background: var(--clr-surface); }
+
+    .rule-list li .num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      background: var(--clr-accent);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .emergency {
+      background: linear-gradient(135deg, var(--clr-accent-deep) 0%, var(--clr-accent) 100%);
+      color: #fff;
+      padding: 24px 28px;
+      border-radius: 12px;
+      margin-top: 32px;
+    }
+
+    .emergency h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .emergency__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .emergency__item {
+      background: rgba(255,255,255,0.1);
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .emergency__item strong {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--clr-peach);
+      margin-bottom: 4px;
+    }
+
+    .contacts {
+      margin-top: 32px;
+      background: #f8f8f8;
+      padding: 24px 28px;
+      border-radius: 12px;
+      border: 1px solid #eee;
+    }
+
+    .contacts h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.05em;
+      color: var(--clr-accent-deep);
+      margin-bottom: 12px;
+    }
+
+    .contacts__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .contacts__item {
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .contacts__item strong {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--clr-text-muted);
+      margin-bottom: 2px;
+    }
+
+    .sign-block {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid #eee;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .sign-block__item label {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--clr-text-muted);
+      margin-bottom: 32px;
+    }
+
+    .sign-block__item .line {
+      border-bottom: 1px solid var(--clr-text);
+      margin-bottom: 4px;
+    }
+
+    .sign-block__item .hint {
+      font-size: 11px;
+      color: var(--clr-text-muted);
+      text-align: center;
+    }
+
+    .footer-bar {
+      background: var(--clr-surface);
+      padding: 20px 48px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--clr-text-muted);
+    }
+
+    .footer-bar strong {
+      color: var(--clr-accent);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print">
+    <span>Памятка по безопасности — Завод Калуга</span>
+    <button onclick="window.print()">Распечатать / Сохранить PDF</button>
+    <button onclick="window.close()">Закрыть</button>
+  </div>
+
+  <div class="page">
+    <div class="header">
+      <img src="https://raw.githubusercontent.com/Isalin84/assets/main/media/Napitki/Logo_RGB-01.png"
+           alt="Напитки Вместе" class="header__logo">
+      <div class="header__badge">Памятка по безопасности</div>
+      <h1>Правила безопасности<br>на территории завода</h1>
+      <div class="header__factory">Завод Калуга</div>
+      <div class="header__date">Действует с 2025 года. Версия 1.0</div>
+    </div>
+
+    <div class="content">
+
+      <div class="intro">
+        Данная памятка является обязательной для ознакомления всеми сотрудниками и подрядчиками,
+        работающими на территории завода Напитки Вместе в г. Калуга. Принцип 8 компании:
+        <strong>Мы заботимся о безопасности во всем.</strong>
+      </div>
+
+      <h2>1. Общие правила поведения на территории</h2>
+      <ol class="rule-list">
+        <li><span class="num">1</span><span>При входе на территорию завода предъявите пропуск и пройдите регистрацию на КПП. Передача пропуска третьим лицам запрещена.</span></li>
+        <li><span class="num">2</span><span>Находиться на территории завода разрешается только в спецодежде и средствах индивидуальной защиты (каска, защитная обувь, жилет повышенной видимости).</span></li>
+        <li><span class="num">3</span><span>Передвигайтесь только по обозначенным пешеходным маршрутам. Соблюдайте дорожную разметку и знаки безопасности.</span></li>
+        <li><span class="num">4</span><span>Курение разрешено только в специально отведённых и обозначенных местах.</span></li>
+        <li><span class="num">5</span><span>Запрещено находиться на территории завода в состоянии алкогольного или наркотического опьянения.</span></li>
+      </ol>
+
+      <h2>2. Правила производственной безопасности</h2>
+      <ol class="rule-list">
+        <li><span class="num">1</span><span>Перед началом работ убедитесь в исправности оборудования, инструментов и средств защиты. О любых неисправностях сообщите руководителю.</span></li>
+        <li><span class="num">2</span><span>Работы на высоте, в замкнутых пространствах и с электрооборудованием выполняются только при наличии наряда-допуска и под контролем ответственного лица.</span></li>
+        <li><span class="num">3</span><span>Запрещается самостоятельно устранять неисправности оборудования без соответствующей квалификации и допуска.</span></li>
+        <li><span class="num">4</span><span>При работе с химическими веществами используйте соответствующие СИЗ и соблюдайте инструкции по обращению с опасными веществами.</span></li>
+        <li><span class="num">5</span><span>Соблюдайте правила блокировки/маркировки (LOTO) при обслуживании и ремонте оборудования.</span></li>
+      </ol>
+
+      <h2>3. Пожарная безопасность</h2>
+      <ol class="rule-list">
+        <li><span class="num">1</span><span>Изучите расположение аварийных выходов, огнетушителей и пожарных щитов на вашем участке.</span></li>
+        <li><span class="num">2</span><span>Запрещается загромождать пути эвакуации, аварийные выходы и доступ к средствам пожаротушения.</span></li>
+        <li><span class="num">3</span><span>При обнаружении возгорания немедленно сообщите по внутреннему телефону и нажмите ближайшую кнопку пожарной тревоги.</span></li>
+        <li><span class="num">4</span><span>Огневые работы проводятся только при наличии наряда-допуска на огневые работы и в присутствии наблюдающего.</span></li>
+      </ol>
+
+      <h2>4. Особенности завода Калуга</h2>
+      <ol class="rule-list">
+        <li><span class="num">1</span><span>На территории завода действует ограничение скорости для транспортных средств: не более 20 км/ч.</span></li>
+        <li><span class="num">2</span><span>При передвижении между корпусами используйте крытые переходы в зимний период для предотвращения травм на скользких поверхностях.</span></li>
+        <li><span class="num">3</span><span>Зона погрузки-разгрузки является зоной повышенной опасности. Пешеходное передвижение через зону погрузки запрещено.</span></li>
+      </ol>
+
+      <h2>5. Действия при несчастном случае</h2>
+      <ol class="rule-list">
+        <li><span class="num">1</span><span>Окажите первую помощь пострадавшему, если это безопасно для вас. Вызовите скорую помощь по номеру 112.</span></li>
+        <li><span class="num">2</span><span>Немедленно сообщите непосредственному руководителю и дежурному по заводу о произошедшем.</span></li>
+        <li><span class="num">3</span><span>Обеспечьте сохранность обстановки на месте происшествия до прибытия комиссии по расследованию.</span></li>
+        <li><span class="num">4</span><span>Запрещается скрывать факты травм, инцидентов и потенциально опасных ситуаций.</span></li>
+      </ol>
+
+      <div class="emergency">
+        <h3>Экстренные номера — Завод Калуга</h3>
+        <div class="emergency__grid">
+          <div class="emergency__item">
+            <strong>Единый номер экстренных служб</strong>
+            112
+          </div>
+          <div class="emergency__item">
+            <strong>Дежурный по заводу</strong>
+            Внутренний: 100
+          </div>
+          <div class="emergency__item">
+            <strong>Служба охраны труда</strong>
+            Внутренний: 105
+          </div>
+          <div class="emergency__item">
+            <strong>Медицинский пункт</strong>
+            Внутренний: 103
+          </div>
+        </div>
+      </div>
+
+      <div class="contacts">
+        <h3>Контакты службы ОТ и ПБ — Калуга</h3>
+        <div class="contacts__grid">
+          <div class="contacts__item">
+            <strong>Руководитель службы ОТ</strong>
+            Специалист по охране труда
+          </div>
+          <div class="contacts__item">
+            <strong>Электронная почта</strong>
+            safety.kaluga@napitkivmeste.ru
+          </div>
+        </div>
+      </div>
+
+      <div class="sign-block">
+        <div class="sign-block__item">
+          <label>Ознакомлен(а):</label>
+          <div class="line"></div>
+          <div class="hint">ФИО / Подпись / Дата</div>
+        </div>
+        <div class="sign-block__item">
+          <label>Инструктаж провёл:</label>
+          <div class="line"></div>
+          <div class="hint">ФИО / Подпись / Дата</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bar">
+      Напитки Вместе. Принцип 8: <strong>Мы заботимся о безопасности во всем.</strong>
+    </div>
+  </div>
+
+</body>
+</html>
