@@ -530,47 +530,9 @@
 
     .hero__visual {
       position: relative;
-      width: clamp(200px, 22vw, 340px);
-      height: clamp(200px, 22vw, 340px);
+      width: clamp(280px, 28vw, 420px);
+      height: clamp(280px, 28vw, 420px);
       flex-shrink: 0;
-    }
-
-    .hero__visual-ring {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      border: 2px solid rgba(157,51,57,0.12);
-      animation: breathe 4s ease-in-out infinite;
-    }
-
-    .hero__visual-ring--2 {
-      inset: 16px;
-      border-color: rgba(157,51,57,0.08);
-      animation-delay: 0.5s;
-    }
-
-    .hero__visual-ring--3 {
-      inset: 32px;
-      border-color: rgba(157,51,57,0.05);
-      animation-delay: 1s;
-    }
-
-    .hero__visual-center {
-      position: absolute;
-      inset: 48px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--clr-accent-deep), var(--clr-accent));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 16px 64px rgba(157,51,57,0.25);
-    }
-
-    .hero__visual-center svg {
-      width: 48%;
-      height: 48%;
-      color: #fff;
-      opacity: 0.9;
     }
 
     @media (max-width: 900px) {
@@ -1351,17 +1313,7 @@
         </noscript>
       </div>
 
-      <div class="hero__visual" aria-hidden="true">
-        <div class="hero__visual-ring"></div>
-        <div class="hero__visual-ring hero__visual-ring--2"></div>
-        <div class="hero__visual-ring hero__visual-ring--3"></div>
-        <div class="hero__visual-center">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            <polyline points="9 12 11 14 15 10"/>
-          </svg>
-        </div>
-      </div>
+      <div class="hero__visual" id="hero-visual-root"></div>
 
     </div>
   </section>
@@ -2455,6 +2407,125 @@
     }
 
     ReactDOM.createRoot(document.getElementById('hero-react-root')).render(<HeroEnhanced />);
+
+    /* ========================================
+       HERO VISUAL — Photo circle with animated rings
+    ======================================== */
+    function HeroVisual() {
+      const [isVisible, setIsVisible] = useState(false);
+      const [isHovered, setIsHovered] = useState(false);
+      const ref = useRef(null);
+
+      useEffect(() => {
+        const observer = new IntersectionObserver(
+          ([entry]) => { if (entry.isIntersecting) { setIsVisible(true); observer.disconnect(); } },
+          { threshold: 0.2 }
+        );
+        if (ref.current) observer.observe(ref.current);
+        return () => observer.disconnect();
+      }, []);
+
+      const ringStyle = (inset, delay, color) => ({
+        position: 'absolute',
+        inset: inset,
+        borderRadius: '50%',
+        border: `2px solid ${color}`,
+        animation: isVisible ? `breathe 4s ease-in-out ${delay}s infinite` : 'none',
+        opacity: isVisible ? 1 : 0,
+        transition: `opacity 1s ease ${delay}s`,
+      });
+
+      return (
+        <div
+          ref={ref}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          style={{
+            position: 'relative',
+            width: '100%',
+            height: '100%',
+          }}
+        >
+          {/* Animated rings */}
+          <div style={ringStyle(0, 0, 'rgba(157,51,57,0.12)')} />
+          <div style={ringStyle(14, 0.4, 'rgba(157,51,57,0.08)')} />
+          <div style={ringStyle(28, 0.8, 'rgba(157,51,57,0.05)')} />
+
+          {/* Photo circle */}
+          <div style={{
+            position: 'absolute',
+            inset: 42,
+            borderRadius: '50%',
+            overflow: 'hidden',
+            boxShadow: isHovered
+              ? '0 24px 80px rgba(157,51,57,0.3), 0 0 0 3px rgba(157,51,57,0.15)'
+              : '0 16px 64px rgba(157,51,57,0.2)',
+            transform: isVisible
+              ? (isHovered ? 'scale(1.03)' : 'scale(1)')
+              : 'scale(0.85)',
+            opacity: isVisible ? 1 : 0,
+            transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+            border: '3px solid rgba(255,255,255,0.8)',
+          }}>
+            <img
+              src="Assets/hero-workers.png"
+              alt="Сотрудники Напитки Вместе в защитном оборудовании"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center top',
+                display: 'block',
+                transform: isHovered ? 'scale(1.05)' : 'scale(1)',
+                transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+              }}
+            />
+          </div>
+
+          {/* Subtle gradient overlay at bottom */}
+          <div style={{
+            position: 'absolute',
+            inset: 42,
+            borderRadius: '50%',
+            background: 'linear-gradient(to top, rgba(69,13,27,0.15) 0%, transparent 40%)',
+            pointerEvents: 'none',
+            zIndex: 1,
+          }} />
+
+          {/* Floating badge */}
+          <div style={{
+            position: 'absolute',
+            bottom: 36,
+            left: '50%',
+            transform: isVisible
+              ? `translateX(-50%) translateY(${isHovered ? '-4px' : '0'})`
+              : 'translateX(-50%) translateY(20px)',
+            opacity: isVisible ? 1 : 0,
+            transition: 'all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s',
+            background: 'rgba(255,255,255,0.95)',
+            backdropFilter: 'blur(12px)',
+            padding: '8px 20px',
+            borderRadius: 99,
+            fontSize: 'var(--fs-xs)',
+            fontWeight: 600,
+            color: 'var(--clr-accent)',
+            letterSpacing: '0.05em',
+            textTransform: 'uppercase',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+            whiteSpace: 'nowrap',
+            zIndex: 2,
+            border: '1px solid rgba(157,51,57,0.1)',
+          }}>
+            Принцип 8 — Безопасность
+          </div>
+        </div>
+      );
+    }
+
+    const heroVisualEl = document.getElementById('hero-visual-root');
+    if (heroVisualEl) {
+      ReactDOM.createRoot(heroVisualEl).render(<HeroVisual />);
+    }
   </script>
 
   <!-- ============================================
