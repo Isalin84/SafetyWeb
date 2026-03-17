@@ -16,20 +16,24 @@
        CUSTOM PROPERTIES — NV Brand + taste-skill
     ============================================= */
     :root {
-      --clr-bg:           #1a1f2e;
-      --clr-surface:      #232a3b;
-      --clr-surface-2:    #2d3548;
-      --clr-surface-3:    #3a4358;
-      --clr-text:         #f1f5f9;
-      --clr-text-muted:   #9ba5b8;
+      --clr-bg:           #FFFFFF;
+      --clr-surface:      #F4E5CB;
+      --clr-surface-2:    #EAEAEA;
+      --clr-surface-3:    #ddd;
+      --clr-text:         #1E1E1E;
+      --clr-text-muted:   #424242;
       --clr-accent:       #9D3339;
       --clr-accent-deep:  #450D1B;
+      --clr-accent-mid:   #945B4A;
       --clr-accent-light: #F7D1AA;
       --clr-peach:        #F7D1AA;
       --clr-beige:        #F4E5CB;
       --clr-mint:         #A5D7AB;
+      --clr-green-deep:   #1E4B2E;
+      --clr-teal:         #194245;
       --clr-blue:         #C6DCFC;
-      --clr-rule:         rgba(255,255,255,0.08);
+      --clr-gray:         #424242;
+      --clr-rule:         rgba(0,0,0,0.08);
 
       --font-display: 'Bebas Neue', 'Impact', sans-serif;
       --font-body: 'Outfit', 'Helvetica Neue', Arial, sans-serif;
@@ -81,9 +85,9 @@
       --dur-slow:   600ms;
       --dur-reveal: 800ms;
 
-      --shadow-card: 0 8px 40px rgba(0,0,0,0.2);
-      --shadow-glow: 0 0 60px rgba(157,51,57,0.15);
-      --shadow-soft: 0 4px 24px rgba(0,0,0,0.12);
+      --shadow-card: 0 8px 32px rgba(0,0,0,0.08);
+      --shadow-glow: 0 0 40px rgba(157,51,57,0.08);
+      --shadow-soft: 0 4px 20px rgba(0,0,0,0.06);
     }
 
     /* =============================================
@@ -141,17 +145,17 @@
       font-weight: var(--fw-semi);
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--clr-peach);
-      background: rgba(157,51,57,0.12);
-      border: 1px solid rgba(157,51,57,0.25);
+      color: var(--clr-accent);
+      background: rgba(157,51,57,0.08);
+      border: 1px solid rgba(157,51,57,0.2);
       padding: 5px 12px;
       border-radius: 99px;
     }
 
     .badge--mint {
-      color: var(--clr-mint);
-      background: rgba(165,215,171,0.1);
-      border-color: rgba(165,215,171,0.2);
+      color: var(--clr-green-deep);
+      background: rgba(30,75,46,0.08);
+      border-color: rgba(30,75,46,0.2);
     }
 
     .accent-bar {
@@ -227,21 +231,21 @@
     .btn--ghost {
       background: transparent;
       color: var(--clr-text);
-      border: 1px solid var(--clr-surface-3);
+      border: 1px solid var(--clr-rule);
     }
     .btn--ghost:hover {
-      background: var(--clr-surface);
+      background: var(--clr-beige);
       transform: translateY(-2px);
-      border-color: rgba(157,51,57,0.4);
+      border-color: rgba(157,51,57,0.3);
     }
 
     .btn--outline-accent {
       background: transparent;
-      color: var(--clr-peach);
-      border: 1px solid rgba(157,51,57,0.4);
+      color: var(--clr-accent);
+      border: 1px solid rgba(157,51,57,0.3);
     }
     .btn--outline-accent:hover {
-      background: rgba(157,51,57,0.1);
+      background: rgba(157,51,57,0.06);
       border-color: var(--clr-accent);
       transform: translateY(-2px);
     }
@@ -297,7 +301,7 @@
       inset: 0;
       z-index: 9999;
       pointer-events: none;
-      opacity: 0.018;
+      opacity: 0.012;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
       background-repeat: repeat;
       background-size: 256px 256px;
@@ -333,11 +337,11 @@
       top: 0;
       z-index: 100;
       height: var(--nav-height);
-      background: rgba(26, 31, 46, 0.85);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(20px) saturate(180%);
       -webkit-backdrop-filter: blur(20px) saturate(180%);
       border-bottom: 1px solid var(--clr-rule);
-      box-shadow: 0 1px 0 rgba(157,51,57,0.06);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.03);
     }
 
     .nav__inner {
@@ -434,7 +438,7 @@
       transition: background var(--dur-fast);
     }
 
-    .nav__toggle:hover { background: var(--clr-surface); }
+    .nav__toggle:hover { background: var(--clr-surface-2); }
 
     .nav__toggle-icon--close { display: none; }
     .nav--open .nav__toggle-icon--open  { display: none; }
@@ -449,7 +453,7 @@
         top: var(--nav-height);
         left: 0;
         right: 0;
-        background: var(--clr-surface);
+        background: var(--clr-bg);
         backdrop-filter: blur(20px);
         flex-direction: column;
         align-items: flex-start;
@@ -483,7 +487,7 @@
       right: -200px;
       width: 800px;
       height: 800px;
-      background: radial-gradient(circle, rgba(157,51,57,0.1) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(244,229,203,0.5) 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -494,49 +498,19 @@
       left: -200px;
       width: 700px;
       height: 700px;
-      background: radial-gradient(circle, rgba(69,13,27,0.06) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(247,209,170,0.2) 0%, transparent 60%);
       pointer-events: none;
     }
 
     .hero__inner {
-      display: grid;
-      grid-template-columns: 1fr 38%;
-      gap: clamp(2rem, 5vw, 4rem);
-      align-items: center;
-      padding-top: calc(var(--nav-height) + var(--space-3xl));
-      padding-bottom: var(--space-3xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: calc(var(--nav-height) + var(--space-4xl));
+      padding-bottom: var(--space-4xl);
       position: relative;
       z-index: 1;
-    }
-
-    .hero__video-col {
-      position: relative;
-    }
-
-    .hero__video-wrap {
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      border: 1px solid rgba(157,51,57,0.25);
-      position: relative;
-      box-shadow: var(--shadow-card), 0 0 80px rgba(157,51,57,0.08);
-      animation: pulse-border 5s ease-in-out infinite;
-    }
-
-    .hero__video-wrap::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: var(--radius-xl);
-      background: linear-gradient(135deg, rgba(157,51,57,0.08), transparent);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .hero__video-label {
-      position: absolute;
-      top: -12px;
-      left: 24px;
-      z-index: 2;
+      max-width: 800px;
     }
 
     .hero__text {
@@ -566,8 +540,8 @@
 
     .hero__sub {
       font-size: var(--fs-lg);
-      font-weight: var(--fw-light);
-      color: var(--clr-text-muted);
+      font-weight: var(--fw-normal);
+      color: var(--clr-gray);
       max-width: 50ch;
       line-height: 1.8;
       margin-bottom: var(--space-2xl);
@@ -582,19 +556,16 @@
     @media (max-width: 900px) {
       .hero { min-height: auto; }
       .hero__inner {
-        grid-template-columns: 1fr;
-        gap: var(--space-2xl);
         padding-top: calc(var(--nav-height) + var(--space-2xl));
         padding-bottom: var(--space-2xl);
       }
-      .hero__video-col { order: -1; }
     }
 
     /* =============================================
        VIDEO SHOWCASE — Dedicated large section
     ============================================= */
     .video-showcase {
-      background: var(--clr-surface);
+      background: var(--clr-beige);
       border-top: 1px solid var(--clr-rule);
       border-bottom: 1px solid var(--clr-rule);
       position: relative;
@@ -605,7 +576,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(157,51,57,0.03) 0%, transparent 50%);
+      background: linear-gradient(135deg, rgba(157,51,57,0.02) 0%, transparent 50%);
       pointer-events: none;
     }
 
@@ -619,8 +590,8 @@
     .video-showcase__frame {
       border-radius: var(--radius-xl);
       overflow: hidden;
-      border: 1px solid rgba(157,51,57,0.2);
-      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(157,51,57,0.15);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.12);
       position: relative;
     }
 
@@ -629,7 +600,7 @@
       position: absolute;
       inset: -1px;
       border-radius: var(--radius-xl);
-      border: 1px solid rgba(255,255,255,0.05);
+      border: 1px solid rgba(0,0,0,0.03);
       pointer-events: none;
       z-index: 1;
     }
@@ -644,7 +615,7 @@
        STATS BAR — Animated counters
     ============================================= */
     .stats-bar {
-      background: var(--clr-bg);
+      background: var(--clr-accent-deep);
       border-bottom: 1px solid var(--clr-rule);
       position: relative;
     }
@@ -656,14 +627,14 @@
       left: 0;
       right: 0;
       height: 1px;
-      background: linear-gradient(to right, transparent, var(--clr-accent), transparent);
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
     }
 
     #stats-root {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1px;
-      background: var(--clr-rule);
+      background: rgba(255,255,255,0.06);
     }
 
     @media (max-width: 640px) {
@@ -688,7 +659,7 @@
       right: -150px;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(157,51,57,0.06) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(244,229,203,0.4) 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -704,7 +675,7 @@
       font-family: var(--font-display);
       font-size: clamp(10rem, 22vw, 22rem);
       color: transparent;
-      -webkit-text-stroke: 1.5px rgba(157,51,57,0.15);
+      -webkit-text-stroke: 2px rgba(157,51,57,0.1);
       line-height: 0.8;
       user-select: none;
       flex-shrink: 0;
@@ -738,7 +709,7 @@
     }
 
     .principle__quote strong {
-      color: var(--clr-peach);
+      color: var(--clr-accent);
       font-weight: var(--fw-semi);
     }
 
@@ -746,7 +717,7 @@
       display: inline-flex;
       align-items: center;
       gap: var(--space-sm);
-      color: var(--clr-peach);
+      color: var(--clr-accent);
       font-weight: var(--fw-semi);
       font-size: var(--fs-lg);
       text-decoration: none;
@@ -754,7 +725,7 @@
     }
 
     .principle__link:hover {
-      color: #fff;
+      color: var(--clr-accent-deep);
       gap: var(--space-md);
     }
 
@@ -770,7 +741,7 @@
        DOCUMENTS HUB — Bento grid
     ============================================= */
     .docs-hub {
-      background: var(--clr-surface);
+      background: var(--clr-surface-2);
       border-top: 1px solid var(--clr-rule);
     }
 
@@ -792,7 +763,7 @@
     .doc-card {
       background: var(--clr-bg);
       border-radius: var(--radius-lg);
-      border: 1px solid var(--clr-surface-3);
+      border: 1px solid var(--clr-rule);
       padding: var(--space-2xl);
       display: flex;
       flex-direction: column;
@@ -881,7 +852,7 @@
       display: inline-flex;
       align-items: center;
       gap: var(--space-sm);
-      color: var(--clr-peach);
+      color: var(--clr-accent);
       font-weight: var(--fw-semi);
       font-size: var(--fs-sm);
       text-decoration: none;
@@ -890,7 +861,7 @@
     }
 
     .doc-card__link:hover {
-      color: #fff;
+      color: var(--clr-accent-deep);
       gap: var(--space-md);
     }
 
@@ -910,6 +881,7 @@
     .contractors {
       background: var(--clr-bg);
       border-top: 1px solid var(--clr-rule);
+      color: var(--clr-text);
     }
 
     .contractors__inner {
@@ -941,7 +913,7 @@
     }
 
     .req-item:hover {
-      background: var(--clr-surface);
+      background: var(--clr-beige);
       border-color: var(--clr-rule);
       transform: translateX(4px);
     }
@@ -953,8 +925,8 @@
     }
 
     .cta-card {
-      background: var(--clr-surface);
-      border: 1px solid rgba(157,51,57,0.2);
+      background: var(--clr-beige);
+      border: 1px solid rgba(157,51,57,0.15);
       border-radius: var(--radius-xl);
       padding: var(--space-3xl);
       position: relative;
@@ -1043,7 +1015,7 @@
        CULTURE SECTION — React pillars
     ============================================= */
     .culture {
-      background: var(--clr-surface);
+      background: var(--clr-beige);
       border-top: 1px solid var(--clr-rule);
     }
 
@@ -1064,8 +1036,6 @@
       padding-block: var(--space-lg);
       overflow: hidden;
       position: relative;
-      border-top: 1px solid rgba(157,51,57,0.3);
-      border-bottom: 1px solid rgba(157,51,57,0.3);
     }
 
     .marquee-strip__track {
@@ -1092,7 +1062,7 @@
        SUSTAINABLE DEVELOPMENT STRIP
     ============================================= */
     .sustain-strip {
-      background: var(--clr-bg);
+      background: var(--clr-surface-2);
       border-top: 1px solid var(--clr-rule);
       border-bottom: 1px solid var(--clr-rule);
     }
@@ -1125,7 +1095,7 @@
       display: inline-flex;
       align-items: center;
       gap: var(--space-sm);
-      color: var(--clr-peach);
+      color: var(--clr-accent);
       font-weight: var(--fw-semi);
       font-size: var(--fs-base);
       text-decoration: none;
@@ -1148,8 +1118,9 @@
        FOOTER
     ============================================= */
     .footer {
-      background: var(--clr-surface);
+      background: var(--clr-accent-deep);
       border-top: 1px solid var(--clr-rule);
+      color: #fff;
     }
 
     .footer__main {
@@ -1180,7 +1151,7 @@
     }
 
     .footer__tagline {
-      color: var(--clr-text-muted);
+      color: rgba(255,255,255,0.6);
       font-size: var(--fs-sm);
       font-weight: var(--fw-light);
       line-height: 1.75;
@@ -1192,7 +1163,7 @@
       font-size: var(--fs-sm);
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--clr-text-muted);
+      color: rgba(255,255,255,0.5);
       margin-bottom: var(--space-lg);
     }
 
@@ -1203,17 +1174,17 @@
     }
 
     .footer__links a {
-      color: var(--clr-text-muted);
+      color: rgba(255,255,255,0.6);
       text-decoration: none;
       font-size: var(--fs-sm);
       font-weight: var(--fw-light);
       transition: color var(--dur-fast);
     }
 
-    .footer__links a:hover { color: var(--clr-text); }
+    .footer__links a:hover { color: #fff; }
 
     .footer__bottom {
-      border-top: 1px solid var(--clr-rule);
+      border-top: 1px solid rgba(255,255,255,0.1);
       padding-block: var(--space-xl);
     }
 
@@ -1222,7 +1193,7 @@
       justify-content: space-between;
       align-items: center;
       font-size: var(--fs-xs);
-      color: var(--clr-text-muted);
+      color: rgba(255,255,255,0.4);
       gap: var(--space-xl);
       flex-wrap: wrap;
     }
@@ -1267,13 +1238,9 @@
     <div class="container nav__inner">
 
       <a href="#" class="nav__brand" aria-label="Напитки Вместе — на главную">
-        <div class="nav__brand-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            <polyline points="9 12 11 14 15 10"/>
-          </svg>
-        </div>
-        <span>Напитки Вместе</span>
+        <img src="https://raw.githubusercontent.com/Isalin84/assets/main/media/Napitki/Logo_RGB-01.png"
+             alt="Напитки Вместе"
+             style="height: 40px; width: auto; display: block;">
       </a>
 
       <button class="nav__toggle" id="nav-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav-links">
@@ -1327,7 +1294,7 @@
         <p class="hero__sub reveal" style="--delay: 200ms">
           Напитки Вместе — крупнейшая пивоваренная компания России,
           для которой забота о людях закреплена в корпоративных принципах.
-          Принцип 8: <strong style="color: var(--clr-peach)">Мы заботимся о безопасности во всем.</strong>
+          Принцип 8: <strong style="color: var(--clr-accent)">Мы заботимся о безопасности во всем.</strong>
         </p>
 
         <div class="hero__actions reveal" style="--delay: 300ms">
@@ -1354,28 +1321,6 @@
               <polyline points="7 7 17 7 17 17"/>
             </svg>
           </a>
-        </div>
-      </div>
-
-      <div class="hero__video-col reveal" data-dir="right" style="--delay: 250ms">
-        <span class="badge hero__video-label">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <circle cx="12" cy="12" r="6"/>
-          </svg>
-          Видеоинструктаж
-        </span>
-        <div class="hero__video-wrap">
-          <div style="position:relative;padding-top:56.25%;width:100%">
-            <iframe
-              src="https://kinescope.io/embed/79vonkjwqvwoee5UtkV8mt"
-              allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;"
-              frameborder="0"
-              allowfullscreen
-              loading="lazy"
-              title="Видеоинструктаж по безопасности — Напитки Вместе"
-              style="position:absolute;width:100%;height:100%;top:0;left:0;border-radius:19px;">
-            </iframe>
-          </div>
         </div>
       </div>
 
@@ -1823,12 +1768,9 @@
     <div class="container footer__main">
 
       <div class="footer__brand">
-        <div class="footer__brand-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            <polyline points="9 12 11 14 15 10"/>
-          </svg>
-        </div>
+        <img src="https://raw.githubusercontent.com/Isalin84/assets/main/media/Napitki/Logo_RGB-01.png"
+             alt="Напитки Вместе"
+             style="height: 48px; width: auto; display: block; margin-bottom: var(--space-md); filter: brightness(0) invert(1);">
         <span class="footer__brand-name">Напитки Вместе</span>
         <p class="footer__tagline">
           Мы заботимся о безопасности во всем.
@@ -1941,7 +1883,7 @@
         <div
           ref={ref}
           style={{
-            background: 'var(--clr-bg)',
+            background: 'transparent',
             padding: 'var(--space-2xl) var(--space-xl)',
             display: 'flex',
             flexDirection: 'column',
@@ -1954,7 +1896,7 @@
           <span style={{
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(var(--fs-4xl), 5vw, var(--fs-6xl))',
-            color: 'var(--clr-accent)',
+            color: '#F7D1AA',
             lineHeight: 1,
             letterSpacing: '0.02em',
           }}>
@@ -1962,7 +1904,7 @@
           </span>
           <span style={{
             fontSize: 'var(--fs-sm)',
-            color: 'var(--clr-text-muted)',
+            color: 'rgba(255,255,255,0.7)',
             lineHeight: 1.55,
             fontWeight: 300,
           }}>
@@ -2060,7 +2002,7 @@
             display: 'flex',
             flexDirection: 'column',
             gap: 'var(--space-md)',
-            background: isHovered ? 'rgba(157,51,57,0.04)' : 'transparent',
+            background: isHovered ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.3)',
             transform: isVisible
               ? (isHovered ? 'translateX(4px) translateY(-2px)' : 'translateX(0)')
               : 'translateY(24px)',
