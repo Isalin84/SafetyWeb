@@ -530,8 +530,8 @@
 
     .hero__visual {
       position: relative;
-      width: clamp(280px, 28vw, 420px);
-      height: clamp(280px, 28vw, 420px);
+      width: clamp(320px, 32vw, 480px);
+      height: clamp(320px, 32vw, 480px);
       flex-shrink: 0;
     }
 
@@ -2425,16 +2425,6 @@
         return () => observer.disconnect();
       }, []);
 
-      const ringStyle = (inset, delay, color) => ({
-        position: 'absolute',
-        inset: inset,
-        borderRadius: '50%',
-        border: `2px solid ${color}`,
-        animation: isVisible ? `breathe 4s ease-in-out ${delay}s infinite` : 'none',
-        opacity: isVisible ? 1 : 0,
-        transition: `opacity 1s ease ${delay}s`,
-      });
-
       return (
         <div
           ref={ref}
@@ -2446,26 +2436,44 @@
             height: '100%',
           }}
         >
-          {/* Animated rings */}
-          <div style={ringStyle(0, 0, 'rgba(157,51,57,0.12)')} />
-          <div style={ringStyle(14, 0.4, 'rgba(157,51,57,0.08)')} />
-          <div style={ringStyle(28, 0.8, 'rgba(157,51,57,0.05)')} />
-
-          {/* Photo circle */}
+          {/* Glow effect behind the circle */}
           <div style={{
             position: 'absolute',
-            inset: 42,
+            inset: -10,
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(157,51,57,0.25) 0%, rgba(157,51,57,0.08) 50%, transparent 70%)',
+            filter: 'blur(20px)',
+            opacity: isVisible ? (isHovered ? 1 : 0.7) : 0,
+            transform: isVisible ? 'scale(1)' : 'scale(0.8)',
+            transition: 'all 1s cubic-bezier(0.16, 1, 0.3, 1)',
+            animation: isVisible ? 'breathe 4s ease-in-out infinite' : 'none',
+          }} />
+
+          {/* Single subtle ring */}
+          <div style={{
+            position: 'absolute',
+            inset: -4,
+            borderRadius: '50%',
+            border: '1.5px solid rgba(157,51,57,0.1)',
+            opacity: isVisible ? 1 : 0,
+            transition: 'opacity 0.8s ease',
+          }} />
+
+          {/* Photo circle — fills most of the container */}
+          <div style={{
+            position: 'absolute',
+            inset: 8,
             borderRadius: '50%',
             overflow: 'hidden',
             boxShadow: isHovered
-              ? '0 24px 80px rgba(157,51,57,0.3), 0 0 0 3px rgba(157,51,57,0.15)'
-              : '0 16px 64px rgba(157,51,57,0.2)',
+              ? '0 24px 80px rgba(157,51,57,0.35), 0 0 60px rgba(157,51,57,0.15)'
+              : '0 16px 64px rgba(157,51,57,0.2), 0 0 40px rgba(157,51,57,0.08)',
             transform: isVisible
               ? (isHovered ? 'scale(1.03)' : 'scale(1)')
               : 'scale(0.85)',
             opacity: isVisible ? 1 : 0,
             transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
-            border: '3px solid rgba(255,255,255,0.8)',
+            border: '3px solid rgba(255,255,255,0.7)',
           }}>
             <img
               src="Assets/hero-workers.png"
@@ -2485,39 +2493,12 @@
           {/* Subtle gradient overlay at bottom */}
           <div style={{
             position: 'absolute',
-            inset: 42,
+            inset: 8,
             borderRadius: '50%',
-            background: 'linear-gradient(to top, rgba(69,13,27,0.15) 0%, transparent 40%)',
+            background: 'linear-gradient(to top, rgba(69,13,27,0.12) 0%, transparent 35%)',
             pointerEvents: 'none',
             zIndex: 1,
           }} />
-
-          {/* Floating badge */}
-          <div style={{
-            position: 'absolute',
-            bottom: 36,
-            left: '50%',
-            transform: isVisible
-              ? `translateX(-50%) translateY(${isHovered ? '-4px' : '0'})`
-              : 'translateX(-50%) translateY(20px)',
-            opacity: isVisible ? 1 : 0,
-            transition: 'all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s',
-            background: 'rgba(255,255,255,0.95)',
-            backdropFilter: 'blur(12px)',
-            padding: '8px 20px',
-            borderRadius: 99,
-            fontSize: 'var(--fs-xs)',
-            fontWeight: 600,
-            color: 'var(--clr-accent)',
-            letterSpacing: '0.05em',
-            textTransform: 'uppercase',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-            whiteSpace: 'nowrap',
-            zIndex: 2,
-            border: '1px solid rgba(157,51,57,0.1)',
-          }}>
-            Принцип 8 — Безопасность
-          </div>
         </div>
       );
     }
