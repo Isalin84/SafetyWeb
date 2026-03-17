@@ -1234,6 +1234,29 @@
     }
 
     /* =============================================
+       MOBILE — Headings max 3 lines, tighter spacing
+    ============================================= */
+    @media (max-width: 640px) {
+      .section-title {
+        font-size: clamp(var(--fs-3xl), 8vw, var(--fs-5xl));
+      }
+      .section-title--sm {
+        font-size: clamp(var(--fs-2xl), 7vw, var(--fs-4xl));
+      }
+      .principle__headline {
+        font-size: clamp(var(--fs-3xl), 8vw, var(--fs-5xl));
+      }
+      .hero__inner {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+      }
+      .hero__visual { display: none; }
+      .contractors__inner { grid-template-columns: 1fr; }
+      .req-list { gap: var(--space-sm); }
+      .req-item { font-size: var(--fs-base); padding: var(--space-sm) var(--space-md); }
+    }
+
+    /* =============================================
        REDUCED MOTION
     ============================================= */
     @media (prefers-reduced-motion: reduce) {
@@ -1323,7 +1346,9 @@
   ============================================= -->
   <div class="marquee-strip" aria-hidden="true">
     <div class="marquee-strip__track">
-      <span class="marquee-strip__item">Безопасность</span>
+      <span class="marquee-strip__item">Культура безопасности</span>
+      <span class="marquee-strip__item marquee-strip__item--accent">//</span>
+      <span class="marquee-strip__item">Бережливое производство</span>
       <span class="marquee-strip__item marquee-strip__item--accent">//</span>
       <span class="marquee-strip__item">Производственная безопасность</span>
       <span class="marquee-strip__item marquee-strip__item--accent">//</span>
@@ -1333,7 +1358,9 @@
       <span class="marquee-strip__item marquee-strip__item--accent">//</span>
       <span class="marquee-strip__item">Напитки Вместе</span>
       <span class="marquee-strip__item marquee-strip__item--accent">//</span>
-      <span class="marquee-strip__item">Безопасность</span>
+      <span class="marquee-strip__item">Культура безопасности</span>
+      <span class="marquee-strip__item marquee-strip__item--accent">//</span>
+      <span class="marquee-strip__item">Бережливое производство</span>
       <span class="marquee-strip__item marquee-strip__item--accent">//</span>
       <span class="marquee-strip__item">Производственная безопасность</span>
       <span class="marquee-strip__item marquee-strip__item--accent">//</span>
@@ -1620,7 +1647,7 @@
       <div>
         <h2 class="section-title reveal" style="--delay: 80ms; color: var(--clr-accent); font-size: clamp(var(--fs-4xl), 4.5vw, var(--fs-6xl));">
           <span style="white-space: nowrap;">Требования по</span><br>
-          <span style="white-space: nowrap;">безопасности,</span><br>
+          <span style="white-space: nowrap;">безопасности</span><br>
           <span style="white-space: nowrap;">для подрядчиков</span>
         </h2>
         <p class="section-desc reveal" style="--delay: 160ms">
@@ -2145,9 +2172,9 @@
     function StatsBar() {
       return (
         <>
-          <AnimatedCounter end={8} label="Принцип компании: Мы заботимся о безопасности во всем" index={0} />
+          <AnimatedCounter end={450} suffix=" млрд" label="Ежегодно на безопасность наших заводов" index={0} />
           <AnimatedCounter end={100} suffix="%" label="Обучение и инструктаж сотрудников проведены" index={1} />
-          <AnimatedCounter end="СОУТ" label="Специальная оценка условий труда выполнена" duration={0} index={2} />
+          <AnimatedCounter end={15000} suffix="+" label="Поведенческих аудитов проводится ежегодно" index={2} />
           <AnimatedCounter end={0} label="Целевой показатель производственного травматизма" index={3} />
         </>
       );
